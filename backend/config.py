@@ -23,6 +23,13 @@ class Settings:
 
     def __init__(self):
         self.cors_origins: str = os.getenv("CORS_ORIGINS", "http://localhost:5173")
+        # Groq Cloud Settings (Option A - Ultra Fast)
+        self.groq_api_key: str = os.getenv("GROQ_API_KEY", "")
+        self.use_groq: bool = os.getenv("USE_GROQ", "true").lower() in ("true", "1", "yes")
+        self.groq_whisper_model: str = os.getenv("GROQ_WHISPER_MODEL", "whisper-large-v3-turbo")
+        self.groq_llm_model: str = os.getenv("GROQ_LLM_MODEL", "llama-3.3-70b-specdec")
+        
+        # Local Fallback Settings
         self.ollama_model: str = os.getenv("OLLAMA_MODEL", "llama3")
         self.whisper_model: str = os.getenv("WHISPER_MODEL", "base")
         self.whisper_device: str = os.getenv("WHISPER_DEVICE", "cpu")

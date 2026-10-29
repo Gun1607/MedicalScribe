@@ -6,9 +6,12 @@ An intelligent, self-learning AI clinical scribe designed to record patient-doct
 
 ## 🌟 Key Features
 
-- **Audio Recording & Processing:** High-fidelity microphone capture with real-time duration tracking, volume waveform animation, re-record capabilities, and payload size inspection.
-- **Accurate Speech-to-Text:** Powered by `faster-whisper` running locally (int8 quantized for low latency).
-- **Structured Note Generation:** Clinical entity extraction via local LLMs (`llama3` via Ollama) into structured medical sections:
+- **⚡ Ultra-Fast Groq Cloud LPU Pipeline (~1.5s Total Latency):**
+  - **Speech-to-Text:** Groq `whisper-large-v3-turbo` transcribes 60s of clinical audio in **~400ms**.
+  - **Clinical Reasoning:** Groq `llama-3.3-70b-versatile` / `llama-3.1-8b-instant` outputs formatted JSON in **~800ms**.
+  - **Instant 1-Click UI Switch:** Configure your free Groq key directly in the web app or in `backend/.env`.
+- **🖥️ Optimized Local CPU Fallback (100% Offline):** Powered by `faster-whisper` (Silero VAD + greedy beam) and local Ollama (`llama3.2:3b` / `llama3`).
+- **Structured Note Generation:** Clinical entity extraction into standardized sections:
   - Patient Demographics (Name, Age, Gender)
   - History of Present Illness (HPI)
   - Past Medical History (PMH)

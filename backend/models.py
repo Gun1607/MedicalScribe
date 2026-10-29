@@ -71,9 +71,12 @@ class TranscribeResponse(BaseModel):
 class HealthResponse(BaseModel):
     """Response from /api/health."""
     status: str
-    whisper_loaded: bool
-    ollama_connected: bool
-    ollama_model: str
+    provider: str = "local"
+    groq_configured: bool = False
+    groq_model: str = ""
+    whisper_loaded: bool = False
+    ollama_connected: bool = False
+    ollama_model: str = ""
 
 
 # --------------------------------------------------------------------------- #
